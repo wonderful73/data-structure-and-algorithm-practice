@@ -56,7 +56,7 @@ class LinkList {
   // 删除
   remove(item) {
     let preNode = this.findPrev(item);
-    if (preNode.nxet !== null) preNode.next = preNode.next.next;
+    if (preNode.next !== null) preNode.next = preNode.next.next;
   }
 }
 
