@@ -129,3 +129,4 @@ guangZhouMetroLine1.back('B', 10);
 guangZhouMetroLine1.display();
 
 console.log('链表长度：',guangZhouMetroLine1.length())
+
