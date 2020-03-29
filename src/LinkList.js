@@ -63,7 +63,8 @@ class LinkList {
     let itemNode = this.find(item);
     let itemNextNode = this.find(item);
     for (let i = 0; i < n; i++) {
-      itemNextNode = itemNextNode.next;
+      if (itemNextNode.next !== null)
+        itemNextNode = itemNextNode.next;
     }
     prevNode.next = prevNode.next.next;
     itemNode.next = null;
@@ -89,4 +90,8 @@ guangZhouMetroLine1.display();
 
 console.log('将 A 往前移动 2 个节点: ')
 guangZhouMetroLine1.advance('A', 2);
+guangZhouMetroLine1.display();
+
+console.log('将 B 往前移动 10 个(超出链表长度)节点: ')
+guangZhouMetroLine1.advance('B', 10);
 guangZhouMetroLine1.display();
