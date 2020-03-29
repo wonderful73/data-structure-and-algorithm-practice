@@ -70,6 +70,32 @@ class LinkList {
     itemNode.next = null;
     this.insert(item, itemNextNode.element);
   }
+
+  // 将某个节点往后移动 n 个节点
+  back(item, n) {
+    let prevNode = this.findPrev(item);
+    let itemNode = this.find(item);
+    let itemPrevNode = this.find(item);
+
+    for(let i = 0; i <= n; i++) {
+      if (itemPrevNode.element !== 'head')
+        itemPrevNode = this.findPrev(itemPrevNode.element);
+    }
+
+    prevNode.next = prevNode.next.next;
+    itemNode.next = null;
+    this.insert(item, itemPrevNode.element);
+  }
+
+  length() {
+    let len = 0;
+    let currentNode = this.head;
+    while (currentNode.next !== null) {
+      currentNode = currentNode.next;
+      len++;
+    }
+    return len;
+  }
 }
 
 // run example:
@@ -80,12 +106,10 @@ guangZhouMetroLine1.insert('B', 'A');
 guangZhouMetroLine1.insert('C','B');
 guangZhouMetroLine1.insert('D','C');
 guangZhouMetroLine1.insert('E', 'D');
-
 guangZhouMetroLine1.display();
 
 console.log('删除C: ');
 guangZhouMetroLine1.remove('C');
-
 guangZhouMetroLine1.display();
 
 console.log('将 A 往前移动 2 个节点: ')
@@ -95,3 +119,13 @@ guangZhouMetroLine1.display();
 console.log('将 B 往前移动 10 个(超出链表长度)节点: ')
 guangZhouMetroLine1.advance('B', 10);
 guangZhouMetroLine1.display();
+
+console.log('将 E 往后移动 2 个节点: ')
+guangZhouMetroLine1.back('E', 4);
+guangZhouMetroLine1.display();
+
+console.log('将 B 往后移动 10 个(超出链表长度)节点: ')
+guangZhouMetroLine1.back('B', 10);
+guangZhouMetroLine1.display();
+
+console.log('链表长度：',guangZhouMetroLine1.length())
